@@ -1,0 +1,17 @@
+library("rredlist")
+library("taxize")
+library("writexl")
+API = "..."
+
+x <- 0
+repeat{
+  x = x+1
+  sp_search <- as.data.frame(rl_search(sp_name[x,], key = API))
+  total_Turkey_1.1 <- rbind(total_Turkey_1.1, sp_search)
+  if (x == 12){
+  break 
+  }
+}
+
+write_xlsx(x, "C:\\Users...")
+
