@@ -1,0 +1,31 @@
+library("rredlist")
+library("taxize")
+library("writexl")
+library("readxl")
+API = "c69221af6d167569e7cc1ebb223c52aa42cebe29cce6bd9de4a776508c21a1f2"
+
+Veri_sifir <- read_excel("C:\\Users\\arda_\\Desktop\\Veri\\v2.0\\Veri_0.xlsx")
+a <- 3
+x <- Veri_sifir[1,]
+x <- as.character(x)
+Veri_2.0 <- as.data.frame(rl_occ_country("Erinaceus Concolor", key = API))
+Veri_De <- t(as.data.frame(rl_occ_country(x, key = API)))
+Veri_sifir <- Veri_sifir[-11,]
+Veri_2.0 <- rl_occ_country("Erinaceus Concolor", key = API)
+a <- 1
+
+  repeat{
+    tryCatch({
+    a = a+1
+    x <- Veri_sifir[a,]
+    x <- as.character(x)
+    Veri_1.0 <- as.data.frame(rl_occ_country(x, key = API))
+    Veri_2.1 <- rbind(Veri_2.0, Veri_1.0)
+
+    }, error=function(e){})
+    
+    if (a == 1073){
+      break 
+    }
+  }
+
