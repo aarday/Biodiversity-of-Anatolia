@@ -1,15 +1,26 @@
 library("rredlist")
 library("taxize")
 library("writexl")
+library("readxl")
 API = "..."
 
-x <- 0
+total_Turkey_1.2 <- as.data.frame(rl_search("Erinaceus Concolor", key = API))
+
+x <- 1
 repeat{
+  tryCatch({
+  repeat{
+  
   x = x+1
-  sp_search <- as.data.frame(rl_search(sp_name[x,], key = API))
-  total_Turkey_1.1 <- rbind(total_Turkey_1.1, sp_search)
-  if (x == 12){
-  break 
+  sp_search <- as.data.frame(rl_search(Veri[x,], key = API))
+  total_Turkey_1.2 <- rbind(total_Turkey_1.2, sp_search)
+  } 
+  }, error=function(e){})
+  empty=matrix(c(rep.int(NA,length(total_Turkey_1.2))),nrow=1,ncol=length(total_Turkey_1.2))  
+  colnames(empty) = colnames(total_Turkey_1.2) 
+  total_Turkey_1.2 <- rbind(total_Turkey_1.2, empty)
+  if (x == 14599){
+    break 
   }
 }
 
