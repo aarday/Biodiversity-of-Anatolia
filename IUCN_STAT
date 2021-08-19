@@ -1,0 +1,8 @@
+sp.list <- veri_sifir %>% distinct(Scientific_Name)
+IUCN_list <- iucn_summary(sp.list$Scientific_Name, distr_detail = TRUE, key = API)
+iucn_status(IUCN_list) %>% as.data.frame() %>%
+  rownames_to_column(var = "Species") %>% set_names(c("Species", "IUCN" )) %>% head()
+
+Veri_son <- as.data.frame(iucn_status(IUCN_list))
+Veri_son$veri_sifir <- veri_sifir
+
