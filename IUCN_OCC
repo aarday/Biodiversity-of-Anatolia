@@ -2,7 +2,7 @@ library("rredlist")
 library("taxize")
 library("writexl")
 library("readxl")
-API = "c69221af6d167569e7cc1ebb223c52aa42cebe29cce6bd9de4a776508c21a1f2"
+API = "..."
 
 Veri_sifir <- read_excel("C:\\Users\\arda_\\Desktop\\Veri\\v2.0\\Veri_0.xlsx")
 a <- 3
